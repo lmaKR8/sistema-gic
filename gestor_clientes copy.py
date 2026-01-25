@@ -1,7 +1,7 @@
 """
 Módulo Gestión de Clientes
 """
-from cliente import Cliente
+from modulos.cliente import Cliente
 
 class GestorClientes:
     """

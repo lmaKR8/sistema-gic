@@ -3,8 +3,8 @@ Módulo de pruebas para el Paso 1.
 =================================
 Aquí se realizan pruebas unitarias básicas para validar la funcionalidad de las clases Cliente y GestorClientes
 """
-from cliente import Cliente
-from gestor_clientes import GestorClientes
+from modulos.cliente import Cliente
+from modulos.gestor_clientes import GestorClientes
 
 
 def test_paso_1():
