@@ -1,10 +1,20 @@
 """
-Acceso al Sistema GIC (Gestor Inteligente de Clientes)
-======================================================
+=================
+Acceso al Sistema
+=================
 """
-from modulos.cliente import Cliente
-from modulos.gestor_clientes import GestorClientes
+from modulos import (
+    Cliente,
+    ClienteRegular,
+    ClientePremium,
+    ClienteCorporativo,
+    GestorClientes
+)
 
+
+"""
+MENÚ
+"""
 def mostrar_encabezado():
     """
     Muestra el encabezado del sistema.
@@ -27,12 +37,38 @@ def mostrar_menu():
     print("  3. Buscar cliente")
     print("  4. Actualizar cliente")
     print("  5. Eliminar cliente")
-    print("  6. Salir")
+    print("  6. Ver estadísticas")
+    print("  7. Salir")
     print("-" * 40)
 
 
+def mostrar_menu_tipo_cliente():
+    """
+    Muestra el submenú para seleccionar tipo de cliente.
+    """
+    print("\n--- Seleccione el tipo de cliente ---")
+    print("  1. Cliente Regular (sin descuento)")
+    print("  2. Cliente Premium (15% descuento + puntos)")
+    print("  3. Cliente Corporativo (25% descuento)")
+    print("  4. Cancelar")
+    return input("  Opción: ").strip()
+
+
+def mostrar_menu_listar():
+    """
+    Muestra el submenú para listar clientes.
+    """
+    print("\n--- Opciones de listado ---")
+    print("  1. Listar todos los clientes")
+    print("  2. Listar solo clientes Regular")
+    print("  3. Listar solo clientes Premium")
+    print("  4. Listar solo clientes Corporativo")
+    print("  5. Volver al menú principal")
+    return input("  Opción: ").strip()
+
+
 """
-FUNCIONES
+FUNCIONES DE SOLICITUD DE DATOS
 """
 def solicitar_datos_cliente():
     """
@@ -50,6 +86,38 @@ def solicitar_datos_cliente():
     return nombre, email, telefono, direccion
 
 
+def solicitar_datos_premium():
+    """
+    Solicita datos adicionales para cliente Premium.
+    
+    Returns:
+        int: Puntos iniciales del cliente
+    """
+    print("\n--- Datos adicionales (Premium) ---")
+    try:
+        puntos = int(input("  Puntos iniciales (0 si es nuevo): ").strip() or "0")
+        return max(0, puntos)  # No permitir puntos negativos
+    except ValueError:
+        print("[X] Valor inválido, se asignarán 0 puntos.")
+        return 0
+
+
+def solicitar_datos_corporativo():
+    """
+    Solicita datos adicionales para cliente Corporativo.
+    
+    Returns:
+        tuple: (nombre_empresa, rut_empresa)
+    """
+    print("\n--- Datos adicionales (Corporativo) ---")
+    nombre_empresa = input("  Nombre de la empresa: ").strip()
+    rut_empresa = input("  RUT de la empresa: ").strip()
+    return nombre_empresa, rut_empresa
+
+
+"""
+FUNCIONES DE OPERACIONES
+"""
 def agregar_cliente(gestor):
     """
     Maneja la opción de agregar un nuevo cliente.
@@ -57,16 +125,70 @@ def agregar_cliente(gestor):
     Args:
         gestor (GestorClientes): Instancia del gestor de clientes
     """
-    nombre, email, telefono, direccion = solicitar_datos_cliente()
+    tipo_opcion = mostrar_menu_tipo_cliente()
     
-    # Valida que todos los campos estén completos
-    if not all([nombre, email, telefono, direccion]):
-        print("\nError: Todos los campos son obligatorios.")
+    if tipo_opcion == '4':
+        print("\n[X] Operación cancelada.")
         return
     
-    # Crea y agrega el cliente
-    cliente = Cliente(nombre, email, telefono, direccion)
-    gestor.agregar_cliente(cliente)
+    # Solicita datos básicos comunes a todos los tipos
+    nombre, email, telefono, direccion = solicitar_datos_cliente()
+    
+    # Valida que los datos básicos estén completos
+    if not all([nombre, email, telefono, direccion]):
+        print("\n[X] Error: Los campos básicos son obligatorios.")
+        return
+    
+    # Crea el cliente según el tipo seleccionado
+    cliente = None
+    
+    if tipo_opcion == '1':
+        # Cliente Regular
+        cliente = ClienteRegular(nombre, email, telefono, direccion)
+        
+    elif tipo_opcion == '2':
+        # Cliente Premium
+        puntos = solicitar_datos_premium()
+        cliente = ClientePremium(nombre, email, telefono, direccion, puntos)
+        
+    elif tipo_opcion == '3':
+        # Cliente Corporativo
+        nombre_empresa, rut_empresa = solicitar_datos_corporativo()
+        if not all([nombre_empresa, rut_empresa]):
+            print("\n[X] Error: Los datos de empresa son obligatorios para clientes corporativos.")
+            return
+        cliente = ClienteCorporativo(nombre, email, telefono, direccion, 
+                                    nombre_empresa, rut_empresa)
+    else:
+        print("\n[X] Opción no válida.")
+        return
+    
+    # Agregar el cliente al gestor
+    if cliente:
+        gestor.agregar_cliente(cliente)
+
+
+def listar_clientes(gestor):
+    """
+    Permite listar todos los clientes o filtrar por tipo.
+    
+    Args:
+        gestor (GestorClientes): Instancia del gestor de clientes
+    """
+    opcion = mostrar_menu_listar()
+    
+    if opcion == '1':
+        gestor.listar_clientes()
+    elif opcion == '2':
+        gestor.listar_por_tipo("Regular")
+    elif opcion == '3':
+        gestor.listar_por_tipo("Premium")
+    elif opcion == '4':
+        gestor.listar_por_tipo("Corporativo")
+    elif opcion == '5':
+        return
+    else:
+        print("\n[X] Opción no válida.")
 
 
 def buscar_cliente(gestor):
@@ -79,7 +201,7 @@ def buscar_cliente(gestor):
     email = input("\n  Ingrese el email del cliente a buscar: ").strip()
     
     if not email:
-        print("\nError: Debe ingresar un email.")
+        print("\n[X] Error: Debe ingresar un email.")
         return
     
     gestor.mostrar_cliente(email)
@@ -95,13 +217,13 @@ def actualizar_cliente(gestor):
     email = input("\n  Ingrese el email del cliente a actualizar: ").strip()
     
     if not email:
-        print("\nError: Debe ingresar un email.")
+        print("\n[X] Error: Debe ingresar un email.")
         return
     
     # Verifica que el cliente existe
     cliente = gestor.buscar_cliente(email)
     if not cliente:
-        print(f"\nNo se encontró ningún cliente con el email '{email}'.")
+        print(f"\n[X] No se encontró ningún cliente con el email '{email}'.")
         return
     
     print("\n--- Datos actuales del cliente ---")
@@ -131,10 +253,10 @@ def eliminar_cliente(gestor):
     email = input("\n  Ingrese el email del cliente a eliminar: ").strip()
     
     if not email:
-        print("\nError: Debe ingresar un email.")
+        print("\n[X] Error: Debe ingresar un email.")
         return
     
-    # Confirma la eliminación
+    # Confirma eliminación
     cliente = gestor.buscar_cliente(email)
     if cliente:
         confirmacion = input(f"\n  ¿Está seguro de eliminar a '{cliente.nombre}'? (s/n): ").strip().lower()
@@ -143,25 +265,107 @@ def eliminar_cliente(gestor):
         else:
             print("\n  Operación cancelada.")
     else:
-        print(f"\nNo se encontró ningún cliente con el email '{email}'.")
+        print(f"\n[X] No se encontró ningún cliente con el email '{email}'.")
 
 
 def cargar_datos_prueba(gestor):
     """
-    Carga datos de prueba para demostrar el funcionamiento del sistema.
+    Carga datos de prueba con diferentes tipos de clientes.
     
     Args:
         gestor (GestorClientes): Instancia del gestor de clientes
     """
     clientes_prueba = [
-        Cliente("Juan Pérez García", "juan.perez@email.com", "+56912345678", "Av. Libertador 1234, Iquique"),
-        Cliente("María González López", "maria.gonzalez@empresa.cl", "+56987654321", "Calle Principal 567, Valparaíso"),
-        Cliente("Carlos Rodríguez Soto", "carlos.rodriguez@corporativo.com", "+56956781234", "Paseo Ahumada 890, Santiago"),
+        # Clientes Regulares
+        ClienteRegular(
+            "Juan Pérez García", 
+            "juan.perez@email.com", 
+            "+56912345678", 
+            "Av. Libertador 1234, Iquique"
+        ),
+        ClienteRegular(
+            "Ana Muñoz Soto", 
+            "ana.munoz@email.com", 
+            "+56911112222", 
+            "Calle Los Aromos 456, Antofagasta"
+        ),
+        
+        # Clientes Premium
+        ClientePremium(
+            "María González López", 
+            "maria.gonzalez@empresa.cl", 
+            "+56987654321", 
+            "Calle Principal 567, Valparaíso",
+            puntos_iniciales=1500
+        ),
+        ClientePremium(
+            "Pedro Silva Ramírez", 
+            "pedro.silva@premium.cl", 
+            "+56933334444", 
+            "Av. Marina 789, Viña del Mar",
+            puntos_iniciales=3200
+        ),
+        
+        # Clientes Corporativos
+        ClienteCorporativo(
+            "Carlos Rodríguez Soto", 
+            "carlos.rodriguez@techcorp.com", 
+            "+56956781234", 
+            "Paseo Ahumada 890, Santiago",
+            nombre_empresa="TechCorp S.A.",
+            rut_empresa="76.543.210-K"
+        ),
+        ClienteCorporativo(
+            "Laura Fernández Díaz", 
+            "laura.fernandez@innovatech.cl", 
+            "+56955556666", 
+            "Av. Apoquindo 4500, Las Condes",
+            nombre_empresa="InnovaTech SpA",
+            rut_empresa="77.888.999-1"
+        ),
     ]
     
-    print("\n--- Cargando datos de prueba ---")
+    print("\n--- Cargando datos de prueba (lista heterogénea) ---")
     for cliente in clientes_prueba:
         gestor.agregar_cliente(cliente)
+    
+    print(f"\n[OK] Se cargaron {len(clientes_prueba)} clientes de diferentes tipos.")
+
+
+def ver_estadisticas(gestor):
+    """
+    Muestra las estadísticas de clientes por tipo.
+    
+    Args:
+        gestor (GestorClientes): Instancia del gestor de clientes
+    """
+    gestor.mostrar_estadisticas()
+
+
+def ver_beneficios_cliente(gestor):
+    """
+    Muestra los beneficios exclusivos de un cliente.
+    
+    Args:
+        gestor (GestorClientes): Instancia del gestor de clientes
+    """
+    email = input("\n  Ingrese el email del cliente: ").strip()
+    
+    if not email:
+        print("\n[X] Error: Debe ingresar un email.")
+        return
+    
+    cliente = gestor.buscar_cliente(email)
+
+    if cliente:
+        print("\n" + "=" * 60)
+        print(f"  BENEFICIOS DE: {cliente.nombre}")
+        print(f"  Tipo: {cliente.obtener_tipo()}")
+        print("=" * 60)
+        print(f"  {cliente.beneficio_exclusivo()}")
+        print("=" * 60)
+    else:
+        print(f"\n[X] No se encontró ningún cliente con el email '{email}'.")
 
 
 """
@@ -175,7 +379,7 @@ def main():
     
     mostrar_encabezado()
     
-    # Preguntar si cargar datos de prueba
+    # Pregunta si desea cargar datos de prueba
     cargar = input("\n¿Desea cargar datos de prueba? (s/n): ").strip().lower()
     if cargar == 's':
         cargar_datos_prueba(gestor)
@@ -183,12 +387,12 @@ def main():
     # Bucle principal del menú
     while True:
         mostrar_menu()
-        opcion = input("  Seleccione una opción (1-6): ").strip()
+        opcion = input("  Seleccione una opción (1-7): ").strip()
         
         if opcion == '1':
             agregar_cliente(gestor)
         elif opcion == '2':
-            gestor.listar_clientes()
+            listar_clientes(gestor)
         elif opcion == '3':
             buscar_cliente(gestor)
         elif opcion == '4':
@@ -196,13 +400,15 @@ def main():
         elif opcion == '5':
             eliminar_cliente(gestor)
         elif opcion == '6':
+            ver_estadisticas(gestor)
+        elif opcion == '7':
             print("\n" + "=" * 60)
             print(" " * 15 + "¡Gracias por usar el sistema GIC!")
             print(" " * 20 + "Hasta pronto.")
             print("=" * 60 + "\n")
             break
         else:
-            print("\nOpción no válida. Por favor, seleccione una opción del 1 al 6.")
+            print("\n[X] Opción no válida. Por favor, seleccione una opción del 1 al 7.")
 
 
 # Punto de entrada del programa

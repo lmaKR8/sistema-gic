@@ -1,6 +1,10 @@
 """
+=================
 Módulo Cliente
+=================
 """
+from typing import Any
+
 
 class Cliente:
     """
@@ -81,14 +85,25 @@ class Cliente:
         print("=" * 50)
 
 
-    def obtener_datos(self) -> dict[str, str]:
+    def obtener_tipo(self) -> str:
+        """
+        Este método está diseñado para ser sobrescrito por las subclases. En la clase base retorna "Cliente".
+        
+        Returns:
+            str: Tipo de cliente
+        """
+        return "Cliente"
+
+
+    def obtener_datos(self) -> dict[str, Any]:
         """
         Retorna los datos del cliente como diccionario. Útil para exportación y serialización de datos.
         
         Returns:
-            dict: Diccionario con los datos del cliente
+            dict[str, Any]: Diccionario con los datos del cliente
         """
         return {
+            'tipo': self.obtener_tipo(),
             'nombre': self.__nombre,
             'email': self.__email,
             'telefono': self.__telefono,
