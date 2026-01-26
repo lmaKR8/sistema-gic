@@ -1,0 +1,164 @@
+@startuml diagrama_clases_gic
+
+!theme plain
+skinparam classAttributeIconSize 0
+skinparam classFontStyle bold
+skinparam backgroundColor white
+
+title Diagrama de Clases - Sistema GIC\n(Gestor Inteligente de Clientes)\nSolutionTech - Evaluación Módulo 4
+
+' ============================================================================
+'                           CLASE BASE: CLIENTE
+' ============================================================================
+abstract class Cliente {
+    - __nombre : str
+    - __email : str
+    - __telefono : str
+    - __direccion : str
+    ==
+    + __init__(nombre, email, telefono, direccion)
+    + __str__() : str
+    + __repr__() : str
+    ==
+    + nombre : str <<property>>
+    + email : str <<property>>
+    + telefono : str <<property>>
+    + direccion : str <<property>>
+    ==
+    + mostrar_info() : void
+    + obtener_datos() : dict
+    + obtener_tipo() : str
+}
+
+' ============================================================================
+'                         SUBCLASES DE CLIENTE
+' ============================================================================
+
+class ClienteRegular {
+    - __descuento_base : float = 0.0
+    ==
+    + __init__(nombre, email, telefono, direccion)
+    + mostrar_info() : void
+    + obtener_tipo() : str
+    + beneficio_exclusivo() : str
+    + calcular_descuento(monto) : float
+}
+
+class ClientePremium {
+    - __descuento_base : float = 0.15
+    - __puntos_acumulados : int = 0
+    ==
+    + __init__(nombre, email, telefono, direccion, puntos)
+    + mostrar_info() : void
+    + obtener_tipo() : str
+    + beneficio_exclusivo() : str
+    + calcular_descuento(monto) : float
+    + agregar_puntos(puntos) : void
+    + canjear_puntos(puntos) : bool
+    + puntos_acumulados : int <<property>>
+}
+
+class ClienteCorporativo {
+    - __descuento_base : float = 0.25
+    - __nombre_empresa : str
+    - __rut_empresa : str
+    ==
+    + __init__(nombre, email, telefono, direccion, empresa, rut)
+    + mostrar_info() : void
+    + obtener_tipo() : str
+    + beneficio_exclusivo() : str
+    + calcular_descuento(monto) : float
+    + generar_factura_info() : dict
+    + nombre_empresa : str <<property>>
+    + rut_empresa : str <<property>>
+}
+
+' ============================================================================
+'                         GESTOR DE CLIENTES
+' ============================================================================
+
+class GestorClientes {
+    - __clientes : list[Cliente]
+    ==
+    + __init__()
+    ==
+    + clientes : list <<property>>
+    + total_clientes : int <<property>>
+    ==
+    .. CRUD Operations ..
+    + agregar_cliente(cliente) : bool
+    + listar_clientes() : void
+    + buscar_cliente(email) : Cliente
+    + mostrar_cliente(email) : bool
+    + actualizar_cliente(email, ...) : bool
+    + eliminar_cliente(email) : bool
+    ==
+    + obtener_total_clientes() : int
+    + limpiar_lista() : void
+}
+
+' ============================================================================
+'                           RELACIONES
+' ============================================================================
+
+' Herencia: Las subclases heredan de Cliente
+Cliente <|-- ClienteRegular
+Cliente <|-- ClientePremium
+Cliente <|-- ClienteCorporativo
+
+' Composición: GestorClientes contiene múltiples Clientes
+GestorClientes "1" *-- "0..*" Cliente
+
+' ============================================================================
+'                              NOTAS
+' ============================================================================
+
+note right of Cliente
+    <b>Clase Base Abstracta</b>
+    ────────────────────
+    Encapsula atributos comunes
+    usando @property para
+    getters y setters.
+end note
+
+note bottom of ClienteRegular
+    <b>Descuento: 0%</b>
+    Cliente estándar
+end note
+
+note bottom of ClientePremium
+    <b>Descuento: 15%</b>
+    Programa de puntos
+end note
+
+note bottom of ClienteCorporativo
+    <b>Descuento: 25%</b>
+    Datos empresariales
+end note
+
+note left of GestorClientes
+    <b>Patrón Manager</b>
+    ────────────────
+    Administra colección
+    de clientes (CRUD)
+    
+    <b>Composición</b>: Los
+    clientes pertenecen
+    al gestor.
+end note
+
+' ============================================================================
+'                              LEYENDA
+' ============================================================================
+
+legend right
+    |= Símbolo |= Significado |
+    | + | Público |
+    | - | Privado |
+    | # | Protegido |
+    | <|-- | Herencia |
+    | *-- | Composición |
+    | o-- | Agregación |
+endlegend
+
+@enduml
