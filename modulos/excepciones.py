@@ -54,7 +54,7 @@ class ValidacionError(GICError):
 
 class EmailInvalidoError(ValidacionError):
     """
-    Excepcion para emails con formato invalido
+    Excepción para emails con formato inválido
     """
     def __init__(self, email: str = ""):
         self.email = email
@@ -64,7 +64,7 @@ class EmailInvalidoError(ValidacionError):
 
 class TelefonoInvalidoError(ValidacionError):
     """
-    Excepcion para telefonos con formato invalido
+    Excepción para teléfonos con formato inválido
     """
     def __init__(self, telefono: str = ""):
         self.telefono = telefono
@@ -84,7 +84,7 @@ class NombreInvalidoError(ValidacionError):
 
 class DireccionInvalidaError(ValidacionError):
     """
-    Excepcion para direcciones con formato invalido
+    Excepción para direcciones con formato invalido
     """
     
     def __init__(self, direccion: str = ""):
@@ -95,7 +95,7 @@ class DireccionInvalidaError(ValidacionError):
 
 class RutInvalidoError(ValidacionError):
     """
-    Excepcion para RUT empresarial con formato invalido
+    Excepción para RUT empresarial con formato invalido
     """
     
     def __init__(self, rut: str = ""):
@@ -106,7 +106,7 @@ class RutInvalidoError(ValidacionError):
 
 class PuntosInvalidosError(ValidacionError):
     """
-    Excepcion para operaciones invalidas con puntos de fidelidad
+    Excepción para operaciones invalidas con puntos de fidelidad
     """
     
     def __init__(self, puntos: int = 0, disponibles: int = 0, operacion: str = ""):
@@ -184,6 +184,30 @@ class ArchivoNoEncontradoError(ArchivoError):
         super().__init__(mensaje, "ARC001")
 
 
+class PermisoArchivoError(ArchivoError):
+    """
+    Excepcion cuando no hay permisos para acceder al archivo.
+    """
+    
+    def __init__(self, ruta: str = "", operacion: str = "acceso"):
+        self.ruta = ruta
+        self.operacion = operacion
+        mensaje = f"Sin permisos de {operacion} para el archivo: '{ruta}'"
+        super().__init__(mensaje, "ARC002")
+
+
+class FormatoArchivoError(ArchivoError):
+    """
+    Excepcion cuando el formato del archivo es invalido.
+    """
+    
+    def __init__(self, ruta: str = "", detalle: str = ""):
+        self.ruta = ruta
+        self.detalle = detalle
+        mensaje = f"Formato de archivo invalido: {detalle}"
+        super().__init__(mensaje, "ARC003")
+
+
 class ErrorEscrituraError(ArchivoError):
     """
     Excepcion cuando falla la escritura de un archivo
@@ -191,4 +215,4 @@ class ErrorEscrituraError(ArchivoError):
     def __init__(self, ruta: str = "", detalle: str = ""):
         self.ruta = ruta
         mensaje = f"Error al escribir archivo '{ruta}': {detalle}"
-        super().__init__(mensaje, "ARC002")
+        super().__init__(mensaje, "ARC004")

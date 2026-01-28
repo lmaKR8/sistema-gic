@@ -1,0 +1,7 @@
+tipo,nombre,email,telefono,direccion,puntos,empresa,rut
+Regular,Juan Perez Garcia,juan.perez@email.com,+56912345678,"Av. Libertador 1234, Iquique",,,
+Regular,Ana Munoz Soto,ana.munoz@email.com,+56911112222,"Calle Los Aromos 456, Antofagasta",,,
+Premium,Maria Gonzalez Lopez,maria.gonzalez@empresa.cl,+56987654321,"Calle Principal 567, Valparaiso",1500,,
+Premium,Pedro Silva Ramirez,pedro.silva@premium.cl,+56933334444,"Av. Marina 789, Vina del Mar",3200,,
+Corporativo,Carlos Rodriguez Soto,carlos.rodriguez@techcorp.com,+56956781234,"Paseo Ahumada 890, Santiago",,TechCorp S.A.,76.543.210-K
+Corporativo,Laura Fernandez Diaz,laura.fernandez@innovatech.cl,+56955556666,"Av. Apoquindo 4500, Las Condes",,InnovaTech SpA,77.888.999-1

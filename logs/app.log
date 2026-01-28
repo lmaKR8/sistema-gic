@@ -1,0 +1,216 @@
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] MODIFICACION: Cliente 'Juan Pérez Modificado' - Campos: nombre, telefono, direccion
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] MODIFICACION: Cliente 'Nuevo Nombre' - Campos: nombre
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Pedro López' (Corporativo) - Email: pedro@empresa.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] BAJA: Cliente eliminado 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Pedro López' (Corporativo) - Email: pedro@empresa.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:53:02] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:02] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpndsgpn49\clientes_test.csv
+[2026-01-28 16:53:02] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpjqx1c8du\clientes_test.csv
+[2026-01-28 16:53:02] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmp97p491jn\clientes_test.csv
+[2026-01-28 16:53:02] [INFO] EXPORTACION: 0 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpru3qvohy\clientes_test.csv
+[2026-01-28 16:53:02] [INFO] REPORTE: Reporte generado en C:\Users\leand\AppData\Local\Temp\tmp8jmuj4wk\reporte_test.txt
+[2026-01-28 16:53:02] [INFO] REPORTE: Reporte generado en C:\Users\leand\AppData\Local\Temp\tmpfbiqjabs\reporte_test.txt
+[2026-01-28 16:53:02] [INFO] REPORTE: Reporte generado en C:\Users\leand\AppData\Local\Temp\tmpjmgb0362\reporte_test.txt
+[2026-01-28 16:53:03] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpszcb0v8u\clientes_test.csv
+[2026-01-28 16:53:03] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpszcb0v8u\clientes_test.csv
+[2026-01-28 16:53:03] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpkig1s_4f\clientes_test.csv
+[2026-01-28 16:53:03] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpkig1s_4f\clientes_test.csv
+[2026-01-28 16:53:03] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpo_9qq4rv\clientes_test.csv
+[2026-01-28 16:53:03] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpo_9qq4rv\clientes_test.csv
+[2026-01-28 16:53:03] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpkm3k9xme\clientes_test.csv
+[2026-01-28 16:53:03] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpkm3k9xme\clientes_test.csv
+[2026-01-28 16:53:03] [TEST] Mensaje para leer
+[2026-01-28 16:53:03] [INFO] Mensaje de prueba
+[2026-01-28 16:53:03] [INFO] ALTA: Nuevo cliente 'Test User' (Regular) - Email: test@mail.com
+[2026-01-28 16:53:03] [INFO] MODIFICACION: Cliente 'Test User Modificado' - Campos: nombre
+[2026-01-28 16:53:03] [INFO] BAJA: Cliente eliminado 'Test User Modificado' (Regular) - Email: test@mail.com
+[2026-01-28 16:53:03] [INFO] ALTA: Nuevo cliente 'Regular User' (Regular) - Email: regular@mail.com
+[2026-01-28 16:53:03] [INFO] ALTA: Nuevo cliente 'Premium User' (Premium) - Email: premium@mail.com
+[2026-01-28 16:53:03] [INFO] ALTA: Nuevo cliente 'Corp User' (Corporativo) - Email: corp@empresa.com
+[2026-01-28 16:53:03] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpqd2hj71m\integracion_test.csv
+[2026-01-28 16:53:03] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpqd2hj71m\integracion_test.csv
+[2026-01-28 16:53:03] [INFO] ALTA: Nuevo cliente 'Regular User' (Regular) - Email: regular@mail.com
+[2026-01-28 16:53:03] [INFO] ALTA: Nuevo cliente 'Premium User' (Premium) - Email: premium@mail.com
+[2026-01-28 16:53:03] [INFO] ALTA: Nuevo cliente 'Corp User' (Corporativo) - Email: corp@empresa.com
+[2026-01-28 16:53:03] [INFO] ALTA: Nuevo cliente 'Regular' (Regular) - Email: regular@mail.com
+[2026-01-28 16:53:03] [INFO] ALTA: Nuevo cliente 'Premium' (Premium) - Email: premium@mail.com
+[2026-01-28 16:53:03] [INFO] ALTA: Nuevo cliente 'Corp' (Corporativo) - Email: corp@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] MODIFICACION: Cliente 'Juan Pérez Modificado' - Campos: nombre, telefono, direccion
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] MODIFICACION: Cliente 'Nuevo Nombre' - Campos: nombre
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Pedro López' (Corporativo) - Email: pedro@empresa.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] BAJA: Cliente eliminado 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Pedro López' (Corporativo) - Email: pedro@empresa.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:23] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpcsy2eljl\clientes_test.csv
+[2026-01-28 16:53:23] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpn3mngivn\clientes_test.csv
+[2026-01-28 16:53:23] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpxrph7foc\clientes_test.csv
+[2026-01-28 16:53:23] [INFO] EXPORTACION: 0 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpvihcdb3d\clientes_test.csv
+[2026-01-28 16:53:23] [INFO] REPORTE: Reporte generado en C:\Users\leand\AppData\Local\Temp\tmp6iugzf8d\reporte_test.txt
+[2026-01-28 16:53:23] [INFO] REPORTE: Reporte generado en C:\Users\leand\AppData\Local\Temp\tmp2yksl03n\reporte_test.txt
+[2026-01-28 16:53:23] [INFO] REPORTE: Reporte generado en C:\Users\leand\AppData\Local\Temp\tmpry8hgclf\reporte_test.txt
+[2026-01-28 16:53:23] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpws0251w2\clientes_test.csv
+[2026-01-28 16:53:23] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpws0251w2\clientes_test.csv
+[2026-01-28 16:53:23] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpqm2p3izp\clientes_test.csv
+[2026-01-28 16:53:23] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpqm2p3izp\clientes_test.csv
+[2026-01-28 16:53:23] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpf_t2jya0\clientes_test.csv
+[2026-01-28 16:53:23] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpf_t2jya0\clientes_test.csv
+[2026-01-28 16:53:23] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpw77iqo39\clientes_test.csv
+[2026-01-28 16:53:23] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpw77iqo39\clientes_test.csv
+[2026-01-28 16:53:23] [TEST] Mensaje para leer
+[2026-01-28 16:53:23] [INFO] Mensaje de prueba
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Test User' (Regular) - Email: test@mail.com
+[2026-01-28 16:53:23] [INFO] MODIFICACION: Cliente 'Test User Modificado' - Campos: nombre
+[2026-01-28 16:53:23] [INFO] BAJA: Cliente eliminado 'Test User Modificado' (Regular) - Email: test@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Regular User' (Regular) - Email: regular@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Premium User' (Premium) - Email: premium@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Corp User' (Corporativo) - Email: corp@empresa.com
+[2026-01-28 16:53:23] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpvr5xwlga\integracion_test.csv
+[2026-01-28 16:53:23] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpvr5xwlga\integracion_test.csv
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Regular User' (Regular) - Email: regular@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Premium User' (Premium) - Email: premium@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Corp User' (Corporativo) - Email: corp@empresa.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Regular' (Regular) - Email: regular@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Premium' (Premium) - Email: premium@mail.com
+[2026-01-28 16:53:23] [INFO] ALTA: Nuevo cliente 'Corp' (Corporativo) - Email: corp@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] MODIFICACION: Cliente 'Juan Pérez Modificado' - Campos: nombre, telefono, direccion
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] MODIFICACION: Cliente 'Nuevo Nombre' - Campos: nombre
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Pedro López' (Corporativo) - Email: pedro@empresa.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] BAJA: Cliente eliminado 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Pedro López' (Corporativo) - Email: pedro@empresa.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:53:35] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmp_dqwe_zu\clientes_test.csv
+[2026-01-28 16:53:35] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpm2_f3iew\clientes_test.csv
+[2026-01-28 16:53:35] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpkox76579\clientes_test.csv
+[2026-01-28 16:53:35] [INFO] EXPORTACION: 0 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmp9ji9fw88\clientes_test.csv
+[2026-01-28 16:53:35] [INFO] REPORTE: Reporte generado en C:\Users\leand\AppData\Local\Temp\tmp_uae317n\reporte_test.txt
+[2026-01-28 16:53:35] [INFO] REPORTE: Reporte generado en C:\Users\leand\AppData\Local\Temp\tmphtor3exb\reporte_test.txt
+[2026-01-28 16:53:35] [INFO] REPORTE: Reporte generado en C:\Users\leand\AppData\Local\Temp\tmpwmptk_4d\reporte_test.txt
+[2026-01-28 16:53:35] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpyn019neo\clientes_test.csv
+[2026-01-28 16:53:35] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpyn019neo\clientes_test.csv
+[2026-01-28 16:53:35] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmp5c_8gx8y\clientes_test.csv
+[2026-01-28 16:53:35] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmp5c_8gx8y\clientes_test.csv
+[2026-01-28 16:53:35] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpuoc8278o\clientes_test.csv
+[2026-01-28 16:53:35] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpuoc8278o\clientes_test.csv
+[2026-01-28 16:53:35] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmp9byz2hx5\clientes_test.csv
+[2026-01-28 16:53:35] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmp9byz2hx5\clientes_test.csv
+[2026-01-28 16:53:35] [TEST] Mensaje para leer
+[2026-01-28 16:53:35] [INFO] Mensaje de prueba
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Test User' (Regular) - Email: test@mail.com
+[2026-01-28 16:53:35] [INFO] MODIFICACION: Cliente 'Test User Modificado' - Campos: nombre
+[2026-01-28 16:53:35] [INFO] BAJA: Cliente eliminado 'Test User Modificado' (Regular) - Email: test@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Regular User' (Regular) - Email: regular@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Premium User' (Premium) - Email: premium@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Corp User' (Corporativo) - Email: corp@empresa.com
+[2026-01-28 16:53:35] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpjkabpmpg\integracion_test.csv
+[2026-01-28 16:53:35] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpjkabpmpg\integracion_test.csv
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Regular User' (Regular) - Email: regular@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Premium User' (Premium) - Email: premium@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Corp User' (Corporativo) - Email: corp@empresa.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Regular' (Regular) - Email: regular@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Premium' (Premium) - Email: premium@mail.com
+[2026-01-28 16:53:35] [INFO] ALTA: Nuevo cliente 'Corp' (Corporativo) - Email: corp@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] MODIFICACION: Cliente 'Juan Pérez Modificado' - Campos: nombre, telefono, direccion
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] MODIFICACION: Cliente 'Nuevo Nombre' - Campos: nombre
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Pedro López' (Corporativo) - Email: pedro@empresa.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] BAJA: Cliente eliminado 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Pedro López' (Corporativo) - Email: pedro@empresa.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Ana García' (Premium) - Email: ana@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Juan Pérez' (Regular) - Email: juan@mail.com
+[2026-01-28 16:57:12] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmplnjw0t_d\clientes_test.csv
+[2026-01-28 16:57:12] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmp8vwa_asf\clientes_test.csv
+[2026-01-28 16:57:12] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmp7lr363xb\clientes_test.csv
+[2026-01-28 16:57:12] [INFO] EXPORTACION: 0 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpwqjeiqpr\clientes_test.csv
+[2026-01-28 16:57:12] [INFO] REPORTE: Reporte generado en C:\Users\leand\AppData\Local\Temp\tmp3rv0n457\reporte_test.txt
+[2026-01-28 16:57:12] [INFO] REPORTE: Reporte generado en C:\Users\leand\AppData\Local\Temp\tmpgb5n_hyv\reporte_test.txt
+[2026-01-28 16:57:12] [INFO] REPORTE: Reporte generado en C:\Users\leand\AppData\Local\Temp\tmpc9exa7i2\reporte_test.txt
+[2026-01-28 16:57:12] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmp1upmqi7h\clientes_test.csv
+[2026-01-28 16:57:12] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmp1upmqi7h\clientes_test.csv
+[2026-01-28 16:57:12] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmp_ms5lmdy\clientes_test.csv
+[2026-01-28 16:57:12] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmp_ms5lmdy\clientes_test.csv
+[2026-01-28 16:57:12] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpt1bol9ho\clientes_test.csv
+[2026-01-28 16:57:12] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpt1bol9ho\clientes_test.csv
+[2026-01-28 16:57:12] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmpujbyfhz8\clientes_test.csv
+[2026-01-28 16:57:12] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmpujbyfhz8\clientes_test.csv
+[2026-01-28 16:57:12] [TEST] Mensaje para leer
+[2026-01-28 16:57:12] [INFO] Mensaje de prueba
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Test User' (Regular) - Email: test@mail.com
+[2026-01-28 16:57:12] [INFO] MODIFICACION: Cliente 'Test User Modificado' - Campos: nombre
+[2026-01-28 16:57:12] [INFO] BAJA: Cliente eliminado 'Test User Modificado' (Regular) - Email: test@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Regular User' (Regular) - Email: regular@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Premium User' (Premium) - Email: premium@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Corp User' (Corporativo) - Email: corp@empresa.com
+[2026-01-28 16:57:12] [INFO] EXPORTACION: 3 clientes exportados a C:\Users\leand\AppData\Local\Temp\tmp9g684ogq\integracion_test.csv
+[2026-01-28 16:57:12] [INFO] IMPORTACION: 3 clientes importados desde C:\Users\leand\AppData\Local\Temp\tmp9g684ogq\integracion_test.csv
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Regular User' (Regular) - Email: regular@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Premium User' (Premium) - Email: premium@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Corp User' (Corporativo) - Email: corp@empresa.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Regular' (Regular) - Email: regular@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Premium' (Premium) - Email: premium@mail.com
+[2026-01-28 16:57:12] [INFO] ALTA: Nuevo cliente 'Corp' (Corporativo) - Email: corp@mail.com

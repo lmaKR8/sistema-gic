@@ -18,8 +18,12 @@ from modulos.excepciones import (
     NombreInvalidoError,
     DireccionInvalidaError,
     ClienteExistenteError,
-    ClienteNoEncontradoError
+    ClienteNoEncontradoError,
+    ArchivoError,
+    ArchivoNoEncontradoError,
+    FormatoArchivoError
 )
+from modulos.archivos import leer_log
 
 """
 MENÚ
@@ -47,8 +51,23 @@ def mostrar_menu():
     print("  4. Actualizar cliente")
     print("  5. Eliminar cliente")
     print("  6. Ver estadísticas")
-    print("  7. Salir")
+    print("  7. Gestión de archivos")
+    print("  8. Salir")
     print("-" * 40)
+
+
+def mostrar_menu_archivos():
+    """
+    Muestra el submenú de gestión de archivos.
+    """
+    print("\n--- Gestión de Archivos ---")
+    print("  1. Exportar clientes a CSV")
+    print("  2. Importar clientes desde CSV")
+    print("  3. Generar reporte TXT")
+    print("  4. Ver log de actividad")
+    print("  5. Volver al menú principal")
+    return input("  Opción: ").strip()
+
 
 
 def mostrar_menu_tipo_cliente():
@@ -378,7 +397,7 @@ def cargar_datos_prueba(gestor):
             ),
         ]
         
-        print("\n--- Cargando datos de prueba (lista heterogenea) ---")
+        print("\n--- Cargando datos de prueba ---")
         for cliente in clientes_prueba:
             gestor.agregar_cliente(cliente, silencioso=True)
         
@@ -433,6 +452,72 @@ def ver_beneficios_cliente(gestor):
         print(f"\n[X] Error del sistema: {e}")
 
 
+def gestionar_archivos(gestor):
+    """
+    Permite exportar, importar, generar reportes y ver logs.
+
+    Args:
+        gestor (GestorClientes): Instancia del gestor de clientes
+    """
+    opcion = mostrar_menu_archivos()
+    
+    if opcion == '1':
+        # Exporta a CSV
+        try:
+            gestor.exportar_csv()
+        except ArchivoError as e:
+            print(f"\n[X] {e}")
+        except Exception as e:
+            print(f"\n[X] Error inesperado: {e}")
+    
+    elif opcion == '2':
+        # Importa desde CSV
+        print("\n--- Importar clientes desde CSV ---")
+        usar_default = input("  Usar archivo por defecto (datos/clientes_entrada.csv)? (s/n): ").strip().lower()
+        
+        try:
+            if usar_default == 's':
+                gestor.importar_csv()
+            else:
+                archivo = input("  Ingrese la ruta del archivo CSV: ").strip()
+                if archivo:
+                    gestor.importar_csv(archivo)
+                else:
+                    print("\n[X] Debe ingresar una ruta de archivo.")
+        except ArchivoNoEncontradoError as e:
+            print(f"\n[X] {e}")
+        except FormatoArchivoError as e:
+            print(f"\n[X] {e}")
+        except ArchivoError as e:
+            print(f"\n[X] {e}")
+        except Exception as e:
+            print(f"\n[X] Error inesperado: {e}")
+    
+    elif opcion == '3':
+        # Genera reporte TXT
+        try:
+            gestor.generar_reporte_txt()
+        except ArchivoError as e:
+            print(f"\n[X] {e}")
+        except Exception as e:
+            print(f"\n[X] Error inesperado: {e}")
+    
+    elif opcion == '4':
+        # Muestra log de actividad
+        print("\n" + "=" * 60)
+        print(" " * 15 + "LOG DE ACTIVIDAD")
+        print("=" * 60)
+        print(leer_log(30))
+        print("=" * 60)
+    
+    elif opcion == '5':
+        return
+    
+    else:
+        print("\n[X] Opcion no valida.")
+
+
+
 """
 FUNCION PRINCIPAL
 """
@@ -467,13 +552,15 @@ def main():
         elif opcion == '6':
             ver_estadisticas(gestor)
         elif opcion == '7':
+            gestionar_archivos(gestor)
+        elif opcion == '8':
             print("\n" + "=" * 60)
             print(" " * 15 + "¡Gracias por usar el sistema GIC!")
             print(" " * 20 + "Hasta pronto.")
             print("=" * 60 + "\n")
             break
         else:
-            print("\n[X] Opción no válida. Por favor, seleccione una opción del 1 al 7.")
+            print("\n[X] Opción no válida. Por favor, seleccione una opción del 1 al 8.")
 
 
 # Punto de entrada al programa

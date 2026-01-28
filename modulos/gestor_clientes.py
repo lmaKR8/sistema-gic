@@ -4,6 +4,15 @@ Módulo Gestión de Clientes
 ==========================
 """
 from modulos.cliente import Cliente
+from modulos.archivos import (
+    exportar_clientes_csv,
+    importar_clientes_csv,
+    generar_reporte,
+    registrar_alta_cliente,
+    registrar_baja_cliente,
+    registrar_modificacion_cliente,
+    registrar_error
+)
 
 
 class GestorClientes:
@@ -52,6 +61,8 @@ class GestorClientes:
         self.__clientes.append(cliente)
         if not silencioso:
             print(f"\n[OK] Cliente '{cliente.nombre}' agregado exitosamente.")
+
+        registrar_alta_cliente(cliente)
         return True
 
 
@@ -132,15 +143,25 @@ class GestorClientes:
             print(f"\n[X] No se encontro ningun cliente con el email '{email}'.")
             return False
         
+        # Registra campos modificados para el log
+        campos_modificados = []
+
         # Actualiza solo los campos proporcionados
         if nombre:
             cliente.nombre = nombre
+            campos_modificados.append("nombre")
         if telefono:
             cliente.telefono = telefono
+            campos_modificados.append("telefono")
         if direccion:
             cliente.direccion = direccion
+            campos_modificados.append("direccion")
         
         print(f"\n[OK] Cliente '{cliente.nombre}' actualizado exitosamente.")
+
+        # Registra en el log
+        if campos_modificados:
+            registrar_modificacion_cliente(cliente, campos_modificados)
         return True
     
 
@@ -163,8 +184,8 @@ class GestorClientes:
             return False
         
         nombre_cliente = cliente.nombre
+        registrar_baja_cliente(cliente) # Registra en log antes de eliminar
         self.__clientes.remove(cliente)
-
         print(f"\n[OK] Cliente '{nombre_cliente}' eliminado exitosamente.")
         return True
 
@@ -250,3 +271,96 @@ class GestorClientes:
                 func = getattr(cliente, metodo)
                 if callable(func):
                     func(*args, **kwargs)
+
+
+    """
+    MANEJO DE ARCHIVOS
+    """
+    def exportar_csv(self, archivo: str) -> bool:
+        """
+        Exporta los clientes a un archivo CSV.
+
+        Args:
+            archivo (str, optional): Ruta del archivo de destino
+        Returns:
+            bool: True si la exportacion fue exitosa
+        Raises:
+            ArchivoError: Si ocurre un error al escribir el archivo
+        """
+        if not self.__clientes:
+            print("\n[!] No hay clientes para exportar.")
+            return False
+        
+        try:
+            resultado = exportar_clientes_csv(self.__clientes, archivo)
+            if resultado:
+                print(f"\n[OK] Se exportaron {len(self.__clientes)} clientes al archivo CSV.")
+            return resultado
+        except Exception as e:
+            registrar_error(e, "exportar_csv")
+            print(f"\n[X] Error al exportar: {str(e)}")
+            return False
+    
+    
+    def importar_csv(self, archivo: str) -> int:
+        """
+        Importa desde un archivo CSV y crea objetos Cliente según el tipo especificado en cada fila. Los clientes duplicados son ignorados.
+        
+        Args:
+            archivo (str, optional): Ruta del archivo CSV de origen
+        Returns:
+            int: Numero de clientes importados exitosamente
+        Raises:
+            ArchivoNoEncontradoError: Si el archivo no existe
+            FormatoArchivoError: Si el formato es invalido
+        """
+        try:
+            clientes_nuevos = importar_clientes_csv(archivo)
+            importados = 0
+            duplicados = 0
+            
+            for cliente in clientes_nuevos:
+                if not self.buscar_cliente(cliente.email):
+                    self.__clientes.append(cliente)
+                    registrar_alta_cliente(cliente)
+                    importados += 1
+                else:
+                    duplicados += 1
+            
+            print(f"\n[OK] Importacion completada:")
+            print(f"     - Clientes importados: {importados}")
+            if duplicados > 0:
+                print(f"     - Clientes duplicados (ignorados): {duplicados}")
+            
+            return importados
+        
+        except Exception as e:
+            registrar_error(e, "importar_csv")
+            print(f"\n[X] Error al importar: {str(e)}")
+            return 0
+    
+    
+    def generar_reporte_txt(self, archivo: str) -> bool:
+        """
+        Genera un reporte de resumen en formato TXT.
+        
+        Args:
+            archivo (str, optional): Ruta del archivo de destino
+        Returns:
+            bool: True si el reporte fue generado exitosamente
+        Raises:
+            ArchivoError: Si ocurre un error al escribir el archivo
+        """
+        try:
+            resultado = generar_reporte(self.__clientes, archivo)
+            if resultado:
+                print(f"\n[OK] Reporte generado exitosamente.")
+            return resultado
+        except Exception as e:
+            registrar_error(e, "generar_reporte")
+            print(f"\n[X] Error al generar reporte: {str(e)}")
+            return False
+
+
+
+

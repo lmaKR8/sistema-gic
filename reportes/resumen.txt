@@ -1,0 +1,66 @@
+============================================================
+          REPORTE DE CLIENTES - SISTEMA GIC
+               SolutionTech S.A.
+============================================================
+
+Fecha de generacion: 2026-01-28 03:57:14
+------------------------------------------------------------
+
+RESUMEN ESTADISTICO
+------------------------------
+Total de clientes: 6
+
+Distribucion por tipo:
+  - Clientes Regular:     2
+  - Clientes Premium:     2
+  - Clientes Corporativo: 2
+------------------------------
+
+LISTA DE CLIENTES
+------------------------------------------------------------
+
+1. Juan Perez Garcia
+   Tipo: Regular
+   Email: juan.perez@email.com
+   Telefono: +56912345678
+   Direccion: Av. Libertador 1234, Iquique
+
+2. Ana Munoz Soto
+   Tipo: Regular
+   Email: ana.munoz@email.com
+   Telefono: +56911112222
+   Direccion: Calle Los Aromos 456, Antofagasta
+
+3. Maria Gonzalez Lopez
+   Tipo: Premium
+   Email: maria.gonzalez@empresa.cl
+   Telefono: +56987654321
+   Direccion: Calle Principal 567, Valparaiso
+   Puntos: 1500
+
+4. Pedro Silva Ramirez
+   Tipo: Premium
+   Email: pedro.silva@premium.cl
+   Telefono: +56933334444
+   Direccion: Av. Marina 789, Vina del Mar
+   Puntos: 3200
+
+5. Carlos Rodriguez Soto
+   Tipo: Corporativo
+   Email: carlos.rodriguez@techcorp.com
+   Telefono: +56956781234
+   Direccion: Paseo Ahumada 890, Santiago
+   Empresa: TechCorp S.A.
+   RUT: 76.543.210-K
+
+6. Laura Fernandez Diaz
+   Tipo: Corporativo
+   Email: laura.fernandez@innovatech.cl
+   Telefono: +56955556666
+   Direccion: Av. Apoquindo 4500, Las Condes
+   Empresa: InnovaTech SpA
+   RUT: 77.888.999-1
+
+------------------------------------------------------------
+Fin del reporte
+============================================================
