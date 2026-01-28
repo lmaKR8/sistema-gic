@@ -10,7 +10,16 @@ from modulos import (
     ClienteCorporativo,
     GestorClientes
 )
-
+from modulos.excepciones import (
+    GICError,
+    ValidacionError,
+    EmailInvalidoError,
+    TelefonoInvalidoError,
+    NombreInvalidoError,
+    DireccionInvalidaError,
+    ClienteExistenteError,
+    ClienteNoEncontradoError
+)
 
 """
 MENÚ
@@ -139,33 +148,49 @@ def agregar_cliente(gestor):
         print("\n[X] Error: Los campos básicos son obligatorios.")
         return
     
-    # Crea el cliente según el tipo seleccionado
-    cliente = None
-    
-    if tipo_opcion == '1':
-        # Cliente Regular
-        cliente = ClienteRegular(nombre, email, telefono, direccion)
+    try:
+        cliente = None
         
-    elif tipo_opcion == '2':
-        # Cliente Premium
-        puntos = solicitar_datos_premium()
-        cliente = ClientePremium(nombre, email, telefono, direccion, puntos)
-        
-    elif tipo_opcion == '3':
-        # Cliente Corporativo
-        nombre_empresa, rut_empresa = solicitar_datos_corporativo()
-        if not all([nombre_empresa, rut_empresa]):
-            print("\n[X] Error: Los datos de empresa son obligatorios para clientes corporativos.")
+        if tipo_opcion == '1':
+            # Cliente Regular
+            cliente = ClienteRegular(nombre, email, telefono, direccion)
+            
+        elif tipo_opcion == '2':
+            # Cliente Premium
+            puntos = solicitar_datos_premium()
+            cliente = ClientePremium(nombre, email, telefono, direccion, puntos)
+            
+        elif tipo_opcion == '3':
+            # Cliente Corporativo
+            nombre_empresa, rut_empresa = solicitar_datos_corporativo()
+            if not all([nombre_empresa, rut_empresa]):
+                print("\n[X] Error: Los datos de empresa son obligatorios para clientes corporativos.")
+                return
+            cliente = ClienteCorporativo(nombre, email, telefono, direccion, 
+                                        nombre_empresa, rut_empresa)
+        else:
+            print("\n[X] Opcion no valida.")
             return
-        cliente = ClienteCorporativo(nombre, email, telefono, direccion, 
-                                    nombre_empresa, rut_empresa)
-    else:
-        print("\n[X] Opción no válida.")
-        return
-    
-    # Agregar el cliente al gestor
-    if cliente:
-        gestor.agregar_cliente(cliente)
+        
+        # Agrega el cliente al gestor
+        if cliente:
+            gestor.agregar_cliente(cliente)
+
+    # Manejo de excepciones
+    except EmailInvalidoError as e:
+        print(f"\n[X] {e}")
+    except TelefonoInvalidoError as e:
+        print(f"\n[X] {e}")
+    except NombreInvalidoError as e:
+        print(f"\n[X] {e}")
+    except DireccionInvalidaError as e:
+        print(f"\n[X] {e}")
+    except ClienteExistenteError as e:
+        print(f"\n[X] {e}")
+    except ValidacionError as e:
+        print(f"\n[X] Error de validacion: {e}")
+    except GICError as e:
+        print(f"\n[X] Error del sistema: {e}")
 
 
 def listar_clientes(gestor):
@@ -204,7 +229,12 @@ def buscar_cliente(gestor):
         print("\n[X] Error: Debe ingresar un email.")
         return
     
-    gestor.mostrar_cliente(email)
+    try:
+        gestor.mostrar_cliente(email)
+    except ClienteNoEncontradoError as e:
+        print(f"\n[X] {e}")
+    except GICError as e:
+        print(f"\n[X] Error del sistema: {e}")
 
 
 def actualizar_cliente(gestor):
@@ -220,27 +250,42 @@ def actualizar_cliente(gestor):
         print("\n[X] Error: Debe ingresar un email.")
         return
     
-    # Verifica que el cliente existe
-    cliente = gestor.buscar_cliente(email)
-    if not cliente:
-        print(f"\n[X] No se encontró ningún cliente con el email '{email}'.")
-        return
+    try:
+        # Verifica que el cliente existe
+        cliente = gestor.buscar_cliente(email)
+        if not cliente:
+            print(f"\n[X] No se encontro ningun cliente con el email '{email}'.")
+            return
+        
+        print("\n--- Datos actuales del cliente ---")
+        cliente.mostrar_info()
+        
+        print("\n--- Ingrese los nuevos datos (deje vacio para mantener el actual) ---")
+        nombre = input(f"  Nombre [{cliente.nombre}]: ").strip()
+        telefono = input(f"  Telefono [{cliente.telefono}]: ").strip()
+        direccion = input(f"  Direccion [{cliente.direccion}]: ").strip()
+        
+        # Actualiza con los valores proporcionados (o None si estan vacios)
+        gestor.actualizar_cliente(
+            email,
+            nombre=nombre if nombre else None,
+            telefono=telefono if telefono else None,
+            direccion=direccion if direccion else None
+        )
     
-    print("\n--- Datos actuales del cliente ---")
-    cliente.mostrar_info()
-    
-    print("\n--- Ingrese los nuevos datos (deje vacío para mantener el actual) ---")
-    nombre = input(f"  Nombre [{cliente.nombre}]: ").strip()
-    telefono = input(f"  Teléfono [{cliente.telefono}]: ").strip()
-    direccion = input(f"  Dirección [{cliente.direccion}]: ").strip()
-    
-    # Actualiza con los valores proporcionados (o None si están vacíos)
-    gestor.actualizar_cliente(
-        email,
-        nombre=nombre if nombre else None,
-        telefono=telefono if telefono else None,
-        direccion=direccion if direccion else None
-    )
+    # Manejo de excepciones
+    except NombreInvalidoError as e:
+        print(f"\n[X] {e}")
+    except TelefonoInvalidoError as e:
+        print(f"\n[X] {e}")
+    except DireccionInvalidaError as e:
+        print(f"\n[X] {e}")
+    except ClienteNoEncontradoError as e:
+        print(f"\n[X] {e}")
+    except ValidacionError as e:
+        print(f"\n[X] Error de validacion: {e}")
+    except GICError as e:
+        print(f"\n[X] Error del sistema: {e}")
 
 
 def eliminar_cliente(gestor):
@@ -256,16 +301,23 @@ def eliminar_cliente(gestor):
         print("\n[X] Error: Debe ingresar un email.")
         return
     
-    # Confirma eliminación
-    cliente = gestor.buscar_cliente(email)
-    if cliente:
-        confirmacion = input(f"\n  ¿Está seguro de eliminar a '{cliente.nombre}'? (s/n): ").strip().lower()
-        if confirmacion == 's':
-            gestor.eliminar_cliente(email)
+    try:
+        # Confirma eliminación
+        cliente = gestor.buscar_cliente(email)
+        if cliente:
+            confirmacion = input(f"\n  Esta seguro de eliminar a '{cliente.nombre}'? (s/n): ").strip().lower()
+            if confirmacion == 's':
+                gestor.eliminar_cliente(email)
+            else:
+                print("\n  Operacion cancelada.")
         else:
-            print("\n  Operación cancelada.")
-    else:
-        print(f"\n[X] No se encontró ningún cliente con el email '{email}'.")
+            print(f"\n[X] No se encontro ningun cliente con el email '{email}'.")
+    
+    # Manejo de excepciones
+    except ClienteNoEncontradoError as e:
+        print(f"\n[X] {e}")
+    except GICError as e:
+        print(f"\n[X] Error del sistema: {e}")
 
 
 def cargar_datos_prueba(gestor):
@@ -275,61 +327,68 @@ def cargar_datos_prueba(gestor):
     Args:
         gestor (GestorClientes): Instancia del gestor de clientes
     """
-    clientes_prueba = [
-        # Clientes Regulares
-        ClienteRegular(
-            "Juan Pérez García", 
-            "juan.perez@email.com", 
-            "+56912345678", 
-            "Av. Libertador 1234, Iquique"
-        ),
-        ClienteRegular(
-            "Ana Muñoz Soto", 
-            "ana.munoz@email.com", 
-            "+56911112222", 
-            "Calle Los Aromos 456, Antofagasta"
-        ),
+    try:
+        clientes_prueba = [
+            # Clientes Regulares
+            ClienteRegular(
+                "Juan Perez Garcia", 
+                "juan.perez@email.com", 
+                "+56912345678", 
+                "Av. Libertador 1234, Iquique",
+            ),
+            ClienteRegular(
+                "Ana Munoz Soto", 
+                "ana.munoz@email.com", 
+                "+56911112222", 
+                "Calle Los Aromos 456, Antofagasta",
+            ),
+            
+            # Clientes Premium
+            ClientePremium(
+                "Maria Gonzalez Lopez", 
+                "maria.gonzalez@empresa.cl", 
+                "+56987654321", 
+                "Calle Principal 567, Valparaiso",
+                puntos_iniciales=1500,
+            ),
+            ClientePremium(
+                "Pedro Silva Ramirez", 
+                "pedro.silva@premium.cl", 
+                "+56933334444", 
+                "Av. Marina 789, Vina del Mar",
+                puntos_iniciales=3200,
+            ),
+            
+            # Clientes Corporativos
+            ClienteCorporativo(
+                "Carlos Rodriguez Soto", 
+                "carlos.rodriguez@techcorp.com", 
+                "+56956781234", 
+                "Paseo Ahumada 890, Santiago",
+                nombre_empresa="TechCorp S.A.",
+                rut_empresa="76.543.210-K",
+            ),
+            ClienteCorporativo(
+                "Laura Fernandez Diaz", 
+                "laura.fernandez@innovatech.cl", 
+                "+56955556666", 
+                "Av. Apoquindo 4500, Las Condes",
+                nombre_empresa="InnovaTech SpA",
+                rut_empresa="77.888.999-1",
+            ),
+        ]
         
-        # Clientes Premium
-        ClientePremium(
-            "María González López", 
-            "maria.gonzalez@empresa.cl", 
-            "+56987654321", 
-            "Calle Principal 567, Valparaíso",
-            puntos_iniciales=1500
-        ),
-        ClientePremium(
-            "Pedro Silva Ramírez", 
-            "pedro.silva@premium.cl", 
-            "+56933334444", 
-            "Av. Marina 789, Viña del Mar",
-            puntos_iniciales=3200
-        ),
+        print("\n--- Cargando datos de prueba (lista heterogenea) ---")
+        for cliente in clientes_prueba:
+            gestor.agregar_cliente(cliente, silencioso=True)
         
-        # Clientes Corporativos
-        ClienteCorporativo(
-            "Carlos Rodríguez Soto", 
-            "carlos.rodriguez@techcorp.com", 
-            "+56956781234", 
-            "Paseo Ahumada 890, Santiago",
-            nombre_empresa="TechCorp S.A.",
-            rut_empresa="76.543.210-K"
-        ),
-        ClienteCorporativo(
-            "Laura Fernández Díaz", 
-            "laura.fernandez@innovatech.cl", 
-            "+56955556666", 
-            "Av. Apoquindo 4500, Las Condes",
-            nombre_empresa="InnovaTech SpA",
-            rut_empresa="77.888.999-1"
-        ),
-    ]
+        print(f"\n[OK] Se cargaron {len(clientes_prueba)} clientes de diferentes tipos.")
     
-    print("\n--- Cargando datos de prueba (lista heterogénea) ---")
-    for cliente in clientes_prueba:
-        gestor.agregar_cliente(cliente)
-    
-    print(f"\n[OK] Se cargaron {len(clientes_prueba)} clientes de diferentes tipos.")
+    # Manejo de excepciones
+    except ClienteExistenteError as e:
+        print(f"\n[!] Advertencia: {e}")
+    except GICError as e:
+        print(f"\n[X] Error al cargar datos de prueba: {e}")
 
 
 def ver_estadisticas(gestor):
@@ -355,17 +414,23 @@ def ver_beneficios_cliente(gestor):
         print("\n[X] Error: Debe ingresar un email.")
         return
     
-    cliente = gestor.buscar_cliente(email)
-
-    if cliente:
-        print("\n" + "=" * 60)
-        print(f"  BENEFICIOS DE: {cliente.nombre}")
-        print(f"  Tipo: {cliente.obtener_tipo()}")
-        print("=" * 60)
-        print(f"  {cliente.beneficio_exclusivo()}")
-        print("=" * 60)
-    else:
-        print(f"\n[X] No se encontró ningún cliente con el email '{email}'.")
+    try:
+        cliente = gestor.buscar_cliente(email)
+        if cliente:
+            print("\n" + "=" * 60)
+            print(f"  BENEFICIOS DE: {cliente.nombre}")
+            print(f"  Tipo: {cliente.obtener_tipo()}")
+            print("=" * 60)
+            print(f"  {cliente.beneficio_exclusivo()}")
+            print("=" * 60)
+        else:
+            print(f"\n[X] No se encontro ningun cliente con el email '{email}'.")
+    
+    # Manejo de excepciones
+    except ClienteNoEncontradoError as e:
+        print(f"\n[X] {e}")
+    except GICError as e:
+        print(f"\n[X] Error del sistema: {e}")
 
 
 """
@@ -380,7 +445,7 @@ def main():
     mostrar_encabezado()
     
     # Pregunta si desea cargar datos de prueba
-    cargar = input("\n¿Desea cargar datos de prueba? (s/n): ").strip().lower()
+    cargar = input("\nDesea cargar datos de prueba? (s/n): ").strip().lower()
     if cargar == 's':
         cargar_datos_prueba(gestor)
     
@@ -411,6 +476,6 @@ def main():
             print("\n[X] Opción no válida. Por favor, seleccione una opción del 1 al 7.")
 
 
-# Punto de entrada del programa
+# Punto de entrada al programa
 if __name__ == "__main__":
     main()

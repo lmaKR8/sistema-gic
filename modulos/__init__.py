@@ -1,11 +1,5 @@
 """
-Este paquete contiene los módulos principales del sistema:
-
-- cliente: Clase base Cliente con encapsulamiento
-- cliente_regular: Clase ClienteRegular (sin descuento)
-- cliente_premium: Clase ClientePremium (15% descuento + puntos)
-- cliente_corporativo: Clase ClienteCorporativo (25% descuento)
-- gestor_clientes: Gestión CRUD de clientes
+Este paquete contiene los módulos principales del sistema
 """
 
 from modulos.cliente import Cliente

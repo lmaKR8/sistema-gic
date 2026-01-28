@@ -4,7 +4,12 @@ Módulo Cliente
 =================
 """
 from typing import Any
-
+from modulos.validaciones import (
+    validar_nombre,
+    validar_email,
+    validar_telefono,
+    validar_direccion
+)
 
 class Cliente:
     """
@@ -18,10 +23,15 @@ class Cliente:
     """
     
     def __init__(self, nombre: str, email: str, telefono: str, direccion: str):
-        self.__nombre = nombre
-        self.__email = email
-        self.__telefono = telefono
-        self.__direccion = direccion
+        validar_nombre(nombre)
+        validar_email(email)
+        validar_telefono(telefono)
+        validar_direccion(direccion)
+        
+        self.__nombre = nombre.strip()
+        self.__email = email.strip().lower()
+        self.__telefono = telefono.strip()
+        self.__direccion = direccion.strip()
     
 
     def __str__(self) -> str:
@@ -87,10 +97,7 @@ class Cliente:
 
     def obtener_tipo(self) -> str:
         """
-        Este método está diseñado para ser sobrescrito por las subclases. En la clase base retorna "Cliente".
-        
-        Returns:
-            str: Tipo de cliente
+        Este método está diseñado para ser sobrescrito por las subclases (default "Cliente").
         """
         return "Cliente"
 
@@ -98,9 +105,6 @@ class Cliente:
     def obtener_datos(self) -> dict[str, Any]:
         """
         Retorna los datos del cliente como diccionario. Útil para exportación y serialización de datos.
-        
-        Returns:
-            dict[str, Any]: Diccionario con los datos del cliente
         """
         return {
             'tipo': self.obtener_tipo(),

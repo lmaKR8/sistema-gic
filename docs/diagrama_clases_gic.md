@@ -22,7 +22,6 @@
 ### Clase Base y Subclases
 ```
                             ┌─────────────────────────┐
-                            │       <<abstract>>      │
                             │         Cliente         │
                             ├─────────────────────────┤
                             │ - __nombre: str         │
@@ -205,9 +204,9 @@ ClientePremium ──▷ Cliente (Herencia)
     │ + canjear_puntos()        │
     │ + puntos_acumulados       │
     └───────────────────────────┘
-            ▲
-            │ hereda
-            │
+                ▲
+                │ hereda
+                │
     ┌───────────────────────────┐
     │         Cliente           │
     └───────────────────────────┘
@@ -266,9 +265,9 @@ ClienteCorporativo ──▷ Cliente (Herencia)
     │ + nombre_empresa <<prop>>   │
     │ + rut_empresa <<prop>>      │
     └─────────────────────────────┘
-            ▲
-            │ hereda
-            │
+                ▲
+                │ hereda
+                │
     ┌─────────────────────────────┐
     │          Cliente            │
     └─────────────────────────────┘

@@ -33,22 +33,25 @@ class GestorClientes:
     """
     CRUD: CREATE
     """
-    def agregar_cliente(self, cliente: Cliente) -> bool:
+    def agregar_cliente(self, cliente: Cliente, silencioso: bool = False) -> bool:
         """
-        Agrega un nuevo cliente al sistema
+        Agrega un nuevo cliente al sistema y verifica la existencia del email.
         
         Args:
             cliente (Cliente): Objeto Cliente a agregar
+            silencioso (bool): Si es True, no muestra mensajes en consola
         Returns:
             bool: True si se agregó correctamente, False si ya existe
         """
         # Verificar si ya existe un cliente con ese email
         if self.buscar_cliente(cliente.email):
-            print(f"\n[X] Error: Ya existe un cliente con el email '{cliente.email}'.")
+            if not silencioso:
+                print(f"\n[X] Error: Ya existe un cliente con el email '{cliente.email}'.")
             return False
         
         self.__clientes.append(cliente)
-        print(f"\n[OK] Cliente '{cliente.nombre}' agregado exitosamente.")
+        if not silencioso:
+            print(f"\n[OK] Cliente '{cliente.nombre}' agregado exitosamente.")
         return True
 
 
@@ -129,7 +132,7 @@ class GestorClientes:
             print(f"\n[X] No se encontro ningun cliente con el email '{email}'.")
             return False
         
-        # Actualizar solo los campos proporcionados
+        # Actualiza solo los campos proporcionados
         if nombre:
             cliente.nombre = nombre
         if telefono:
